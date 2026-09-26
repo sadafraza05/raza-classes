@@ -4,7 +4,7 @@ const phone = "919718499919";
 const SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwTLYvLT4PxYBsSORB_OORr5461yox6_GeUeJV2ekhdO7eve-WpPsy1LSy-jJ4_U_8OCg/exec";
 
 function sendToSheet(data) {
-  if (!SHEET_WEBAPP_URL || SHEET_WEBAPP_URL === "https://script.google.com/macros/s/AKfycbwTLYvLT4PxYBsSORB_OORr5461yox6_GeUeJV2ekhdO7eve-WpPsy1LSy-jJ4_U_8OCg/exec") return;
+  if (!SHEET_WEBAPP_URL || SHEET_WEBAPP_URL === "PASTE_YOUR_WEB_APP_URL_HERE") return;
   fetch(SHEET_WEBAPP_URL, {
     method: "POST",
     mode: "no-cors",
