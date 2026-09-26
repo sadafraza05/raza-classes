@@ -1,5 +1,18 @@
 const phone = "919718499919";
 
+// Paste your Google Apps Script Web App URL here (from Deploy > New deployment)
+const SHEET_WEBAPP_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
+
+function sendToSheet(data) {
+  if (!SHEET_WEBAPP_URL || SHEET_WEBAPP_URL === "https://script.google.com/macros/s/AKfycbwTLYvLT4PxYBsSORB_OORr5461yox6_GeUeJV2ekhdO7eve-WpPsy1LSy-jJ4_U_8OCg/exec") return;
+  fetch(SHEET_WEBAPP_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(data)
+  }).catch(() => {});
+}
+
 document.addEventListener("contextmenu", e => e.preventDefault());
 
 const menuToggle = document.querySelector(".menu-toggle");
@@ -27,6 +40,16 @@ function formValue(form, name) {
 document.querySelector("#registrationForm").addEventListener("submit", e => {
   e.preventDefault();
   const f = e.currentTarget;
+  sendToSheet({
+    type: "Registration",
+    name: formValue(f,"name"),
+    phone: formValue(f,"phone"),
+    course: formValue(f,"course"),
+    category: formValue(f,"category"),
+    mode: formValue(f,"mode"),
+    timing: formValue(f,"timing"),
+    message: formValue(f,"message")
+  });
   const message =
 `Hello Raza Classes,
 I want to register for a course.
@@ -44,6 +67,13 @@ Message: ${formValue(f,"message")}`;
 document.querySelector("#quoteForm").addEventListener("submit", e => {
   e.preventDefault();
   const f = e.currentTarget;
+  sendToSheet({
+    type: "Quote",
+    name: formValue(f,"name"),
+    phone: formValue(f,"phone"),
+    course: formValue(f,"course"),
+    message: formValue(f,"message")
+  });
   const message =
 `Hello Raza Classes,
 I want a course fee quote.
