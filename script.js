@@ -1,7 +1,7 @@
 const phone = "919718499919";
 
 // Paste your Google Apps Script Web App URL here (from Deploy > New deployment)
-const SHEET_WEBAPP_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
+const SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwTLYvLT4PxYBsSORB_OORr5461yox6_GeUeJV2ekhdO7eve-WpPsy1LSy-jJ4_U_8OCg/exec";
 
 function sendToSheet(data) {
   if (!SHEET_WEBAPP_URL || SHEET_WEBAPP_URL === "https://script.google.com/macros/s/AKfycbwTLYvLT4PxYBsSORB_OORr5461yox6_GeUeJV2ekhdO7eve-WpPsy1LSy-jJ4_U_8OCg/exec") return;
