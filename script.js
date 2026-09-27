@@ -73,7 +73,9 @@ Note: Your response has already been sent to the Raza Classes website. This is a
   openWhatsApp(message);
   f.reset();
   showSuccess("#regSuccess");
-});.addEventListener("submit", e => {
+});
+
+document.querySelector("#quoteForm").addEventListener("submit", e => {
   e.preventDefault();
   const f = e.currentTarget;
   sendToSheet({
@@ -96,4 +98,6 @@ Note: Your response has already been sent to the Raza Classes website. This is a
   openWhatsApp(message);
   f.reset();
   showSuccess("#quoteSuccess");
-});.textContent = new Date().getFullYear();
+});
+
+document.querySelector("#year").textContent = new Date().getFullYear();
