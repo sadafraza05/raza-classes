@@ -33,6 +33,13 @@ function openWhatsApp(message) {
   window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
 }
 
+function showSuccess(id) {
+  const el = document.querySelector(id);
+  if (!el) return;
+  el.classList.add("show");
+  setTimeout(() => el.classList.remove("show"), 5000);
+}
+
 function formValue(form, name) {
   return form.querySelector(`[name="${name}"]`)?.value.trim() || "Not specified";
 }
@@ -60,11 +67,13 @@ Course: ${formValue(f,"course")}
 Category: ${formValue(f,"category")}
 Mode: ${formValue(f,"mode")}
 Preferred Timing: ${formValue(f,"timing")}
-Message: ${formValue(f,"message")}`;
-  openWhatsApp(message);
-});
+Message: ${formValue(f,"message")}
 
-document.querySelector("#quoteForm").addEventListener("submit", e => {
+Note: Your response has already been sent to the Raza Classes website. This is a direct message for a fast service response. Thank you!`;
+  openWhatsApp(message);
+  f.reset();
+  showSuccess("#regSuccess");
+});.addEventListener("submit", e => {
   e.preventDefault();
   const f = e.currentTarget;
   sendToSheet({
@@ -81,8 +90,10 @@ I want a course fee quote.
 Name: ${formValue(f,"name")}
 Phone: ${formValue(f,"phone")}
 Course: ${formValue(f,"course")}
-Requirement: ${formValue(f,"message")}`;
-  openWhatsApp(message);
-});
+Requirement: ${formValue(f,"message")}
 
-document.querySelector("#year").textContent = new Date().getFullYear();
+Note: Your response has already been sent to the Raza Classes website. This is a direct message for a fast service response. Thank you!`;
+  openWhatsApp(message);
+  f.reset();
+  showSuccess("#quoteSuccess");
+});.textContent = new Date().getFullYear();
